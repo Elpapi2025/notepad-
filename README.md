@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ## GreenNote Native Android App
 
 This directory contains a native Android application built with Kotlin and Jetpack Compose. It's a re-implementation of the Next.js web application.
@@ -17,3 +18,10 @@ This directory contains a native Android application built with Kotlin and Jetpa
     *   `MainActivity.kt`: The main entry point of the application.
 *   `app/build.gradle.kts`: App-level build file where dependencies are declared.
 *   `build.gradle.kts`: Project-level build file.
+=======
+# Firebase Studio
+
+This is a NextJS starter in Firebase Studio.
+
+To get started, take a look at src/app/page.tsx.
+>>>>>>> f2839bc (Initialized workspace with Firebase Studio)
