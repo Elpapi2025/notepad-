@@ -67,11 +67,11 @@ export default function Home() {
     });
   };
 
-  const handleSaveNote = (title: string, content: string) => {
+  const handleSaveNote = (title: string, content: string, color?: string) => {
     if (selectedNote) {
       setNotes(
         notes.map((note) =>
-          note.id === selectedNote.id ? { ...note, title, content } : note
+          note.id === selectedNote.id ? { ...note, title, content, color } : note
         )
       );
       toast({
@@ -84,6 +84,7 @@ export default function Home() {
         title,
         content,
         createdAt: new Date().toISOString(),
+        color,
       };
       setNotes([newNote, ...notes]);
       toast({

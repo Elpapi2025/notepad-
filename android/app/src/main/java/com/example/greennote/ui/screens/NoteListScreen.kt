@@ -118,6 +118,13 @@ fun NoteListScreen(
 
 @Composable
 fun NoteCard(note: Note, onClick: () -> Unit) {
+    val cardColor = try {
+        note.color?.let { Color(android.graphics.Color.parseColor(it)) } ?: MaterialTheme.colorScheme.surfaceVariant
+    } catch (e: Exception) {
+        MaterialTheme.colorScheme.surfaceVariant
+    }
+    val contentColor = if (cardColor.luminance() > 0.5) Color.Black else Color.White
+
     ElevatedCard(
         modifier = Modifier
             .fillMaxWidth()
@@ -126,7 +133,7 @@ fun NoteCard(note: Note, onClick: () -> Unit) {
             .border(1.dp, Color.LightGray, RoundedCornerShape(12.dp)), // Added subtle border
         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
         shape = RoundedCornerShape(12.dp),
-        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant)
+        colors = CardDefaults.cardColors(containerColor = cardColor)
     ) {
         Column(
             modifier = Modifier
@@ -139,7 +146,7 @@ fun NoteCard(note: Note, onClick: () -> Unit) {
                 fontWeight = FontWeight.Bold,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
-                color = MaterialTheme.colorScheme.onSurfaceVariant
+                color = contentColor
             )
             Spacer(modifier = Modifier.height(8.dp))
             Text(
@@ -147,13 +154,13 @@ fun NoteCard(note: Note, onClick: () -> Unit) {
                 style = MaterialTheme.typography.bodyMedium,
                 maxLines = 3,
                 overflow = TextOverflow.Ellipsis,
-                color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.8f)
+                color = contentColor.copy(alpha = 0.8f)
             )
             Spacer(modifier = Modifier.height(12.dp))
             Text(
                 text = SimpleDateFormat("MMM d, yyyy", Locale.getDefault()).format(Date(note.createdAt)),
                 style = MaterialTheme.typography.labelSmall,
-                color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.7f)
+                color = contentColor.copy(alpha = 0.7f)
             )
         }
     }
