@@ -10,12 +10,9 @@
       android:pathData="M54,54m-24,0a24,24 0,1 1,48 0a24,24 0,1 1,-48 0"
       android:fillColor="#FFFFFF"/>
   <path
-      android:pathData="M9,12h6m-6,4h6m2,5H7a2,2 0,0 1,-2 -2V5a2,2 0,0 1,2 -2h5.586a1,1 0,0 1,0.707 0.293l5.414,5.414a1,1 0,0 1,0.293 0.707V19a2,2 0,0 1,-2 2z"
+      android:pathData="M45,40 H63 M45,50 H63 M45,60 H55"
       android:strokeWidth="1.5"
       android:strokeColor="#3DDC84"
       android:strokeLineCap="round"
-      android:strokeLineJoin="round"
-      android:fillType="evenOdd"
-      android:pathData="M45,40 H63 M45,50 H63 M45,60 H55"
-      />
+      android:strokeLineJoin="round" />
 </vector>
