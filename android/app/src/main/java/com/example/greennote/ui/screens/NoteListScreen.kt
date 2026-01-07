@@ -162,11 +162,18 @@ fun NoteCard(note: Note, onClick: () -> Unit) {
                 color = contentColor.copy(alpha = 0.8f)
             )
             Spacer(modifier = Modifier.height(12.dp))
-            Text(
-                text = SimpleDateFormat("MMM d, yyyy", Locale.getDefault()).format(Date(note.createdAt)),
-                style = MaterialTheme.typography.labelSmall,
-                color = contentColor.copy(alpha = 0.7f)
-            )
+            val date = try {
+                note.createdAt?.let { SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.getDefault()).parse(it) }
+            } catch (e: Exception) {
+                null
+            }
+            date?.let {
+                Text(
+                    text = SimpleDateFormat("MMM d, yyyy", Locale.getDefault()).format(it),
+                    style = MaterialTheme.typography.labelSmall,
+                    color = contentColor.copy(alpha = 0.7f)
+                )
+            }
         }
     }
 }
