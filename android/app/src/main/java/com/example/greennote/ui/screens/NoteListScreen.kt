@@ -119,10 +119,11 @@ fun NoteListScreen(
 @Composable
 fun NoteCard(note: Note, onClick: () -> Unit) {
     val cardColor = Color(note.color)
-    val contentColor = if (noteColors.contains(cardColor)) {
-        noteContentColors[noteColors.indexOf(cardColor)]
-    } else {
-        // Fallback: Use a default contrasting color if cardColor is not in the predefined list
+    val contentColor = if (cardColor == Color.White) { // Explicitly check for white background
+        Color.Black // Force black text on white background
+    } else if (noteColors.contains(cardColor)) { // If it's one of our predefined colors
+        noteContentColors[noteColors.indexOf(cardColor)] // Use the mapped content color
+    } else { // Fallback for unknown colors
         if (cardColor.luminance() > 0.5f) Color.Black else Color.White
     }
 
