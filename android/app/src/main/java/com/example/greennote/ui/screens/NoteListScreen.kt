@@ -29,8 +29,17 @@ import java.util.*
 import androidx.compose.material.icons.outlined.Lightbulb
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.material.icons.outlined.Settings
-import com.example.greennote.ui.screens.noteColors
-import com.example.greennote.ui.screens.noteContentColors
+// import com.example.greennote.ui.screens.noteColors
+// import com.example.greennote.ui.screens.noteContentColors
+
+// Helper function to safely parse color outside of a Composable
+private fun parseColorSafe(colorString: String?, defaultColor: Color): Color {
+    return try {
+        colorString?.let { Color(android.graphics.Color.parseColor(it).toULong()) } ?: defaultColor
+    } catch (e: Exception) {
+        defaultColor
+    }
+}
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -118,11 +127,7 @@ fun NoteListScreen(
 
 @Composable
 fun NoteCard(note: Note, onClick: () -> Unit) {
-    val cardColor = try {
-        note.color?.let { Color(android.graphics.Color.parseColor(it)) } ?: MaterialTheme.colorScheme.surfaceVariant
-    } catch (e: Exception) {
-        MaterialTheme.colorScheme.surfaceVariant
-    }
+    val cardColor = parseColorSafe(note.color, MaterialTheme.colorScheme.surfaceVariant)
     val contentColor = if (cardColor.luminance() > 0.5) Color.Black else Color.White
 
     ElevatedCard(
