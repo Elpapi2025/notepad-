@@ -122,9 +122,10 @@ fun NoteCard(note: Note, onClick: () -> Unit) {
     val contentColor = if (cardColor == Color.White) { // Explicitly check for white background
         Color.Black // Force black text on white background
     } else if (noteColors.contains(cardColor)) { // If it's one of our predefined colors
-        noteContentColors[noteColors.indexOf(cardColor)] // Use the mapped content color
-    } else { // Fallback for unknown colors
-        if (cardColor.luminance() > 0.5f) Color.Black else Color.White
+        noteContentColors[noteColors.indexOf(cardColor)] // Use the mapped content color (which is black for all current noteColors)
+    } else { // Fallback for any other (unknown) colors - force black if perceived as light
+        // Use a very low threshold to ensure most non-dark colors get black text
+        if (cardColor.luminance() > 0.1f) Color.Black else Color.White
     }
 
     ElevatedCard(
