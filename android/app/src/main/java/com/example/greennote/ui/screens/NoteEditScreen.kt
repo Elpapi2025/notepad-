@@ -50,7 +50,7 @@ fun NoteEditScreen(
 
     var title by remember { mutableStateOf("") }
     var content by remember { mutableStateOf("") }
-    var color by remember { mutableStateOf(noteColors[0].value.toLong()) }
+    var color by remember { mutableStateOf(noteColors[4].value.toLong()) }
 
     // Fetch the note details if it's an existing note
     LaunchedEffect(noteId) {

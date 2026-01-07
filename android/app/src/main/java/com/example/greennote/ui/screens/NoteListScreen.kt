@@ -123,7 +123,8 @@ fun NoteCard(note: Note, onClick: () -> Unit) {
         modifier = Modifier
             .fillMaxWidth()
             .padding(vertical = 6.dp)
-            .clickable(onClick = onClick),
+            .clickable(onClick = onClick)
+            .border(1.dp, Color.LightGray, RoundedCornerShape(12.dp)), // Added subtle border
         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
         shape = RoundedCornerShape(12.dp),
         colors = CardDefaults.cardColors(containerColor = cardColor)
