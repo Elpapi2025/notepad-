@@ -119,7 +119,12 @@ fun NoteListScreen(
 @Composable
 fun NoteCard(note: Note, onClick: () -> Unit) {
     val cardColor = Color(note.color)
-    val contentColor = noteContentColors[noteColors.indexOf(cardColor)]
+    val contentColor = if (noteColors.contains(cardColor)) {
+        noteContentColors[noteColors.indexOf(cardColor)]
+    } else {
+        // Fallback: Use a default contrasting color if cardColor is not in the predefined list
+        if (cardColor.luminance() > 0.5f) Color.Black else Color.White
+    }
 
     ElevatedCard(
         modifier = Modifier
