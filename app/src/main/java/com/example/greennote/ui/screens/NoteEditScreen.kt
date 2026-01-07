@@ -1,25 +1,42 @@
 package com.example.greennote.ui.screens
 
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Save
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.greennote.data.NoteRepository
-
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material.icons.filled.Delete
-import androidx.compose.material.icons.filled.Save
-import androidx.compose.material3.*
 import kotlinx.coroutines.launch
+
+val noteColors = listOf(
+    Color(0xFFFFFFFF), // White
+    Color(0xFFF28B82), // Red
+    Color(0xFFFBBC04), // Orange
+    Color(0xFFFFF475), // Yellow
+    Color(0xFFCCFF90), // Green
+    Color(0xFFA7FFEB), // Teal
+    Color(0xFFCBF0F8), // Blue
+    Color(0xFFAFCBFA), // Dark Blue
+    Color(0xFFD7AEFB), // Purple
+    Color(0xFFFDCFE8), // Pink
+    Color(0xFFE6C9A8), // Brown
+    Color(0xFFE8EAED)  // Gray
+)
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -33,6 +50,7 @@ fun NoteEditScreen(
 
     var title by remember { mutableStateOf("") }
     var content by remember { mutableStateOf("") }
+    var color by remember { mutableStateOf(noteColors[0].value.toLong()) }
 
     // Fetch the note details if it's an existing note
     LaunchedEffect(noteId) {
@@ -40,6 +58,7 @@ fun NoteEditScreen(
             noteRepository.getNoteById(noteId)?.let { note ->
                 title = note.title
                 content = note.content
+                color = note.color
             }
         }
     }
@@ -73,9 +92,9 @@ fun NoteEditScreen(
                     if (title.isNotBlank()) {
                         scope.launch {
                             if (isNewNote) {
-                                noteRepository.addNote(title, content)
+                                noteRepository.addNote(title, content, color)
                             } else {
-                                noteRepository.updateNote(noteId!!, title, content)
+                                noteRepository.updateNote(noteId!!, title, content, color)
                             }
                             navController.popBackStack()
                         }
@@ -106,6 +125,27 @@ fun NoteEditScreen(
                     unfocusedIndicatorColor = Color.Transparent
                 )
             )
+            Spacer(modifier = Modifier.height(8.dp))
+            LazyRow(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.spacedBy(8.dp)
+            ) {
+                items(noteColors) { itemColor ->
+                    val isSelected = color == itemColor.value.toLong()
+                    Box(
+                        modifier = Modifier
+                            .size(36.dp)
+                            .clip(CircleShape)
+                            .background(itemColor)
+                            .border(
+                                width = if (isSelected) 2.dp else 1.dp,
+                                color = if (isSelected) MaterialTheme.colorScheme.primary else Color.Gray,
+                                shape = CircleShape
+                            )
+                            .clickable { color = itemColor.value.toLong() }
+                    )
+                }
+            }
             Spacer(modifier = Modifier.height(8.dp))
             TextField(
                 value = content,

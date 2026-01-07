@@ -13,6 +13,8 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.luminance
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -112,13 +114,18 @@ fun NoteListScreen(
 
 @Composable
 fun NoteCard(note: Note, onClick: () -> Unit) {
+    val cardColor = Color(note.color)
+    // Determine a readable content color based on the card's background color
+    val contentColor = if (cardColor.luminance() > 0.5) Color.Black else Color.White
+
     ElevatedCard(
         modifier = Modifier
             .fillMaxWidth()
             .padding(vertical = 6.dp)
             .clickable(onClick = onClick),
         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
-        shape = RoundedCornerShape(12.dp)
+        shape = RoundedCornerShape(12.dp),
+        colors = CardDefaults.cardColors(containerColor = cardColor)
     ) {
         Column(
             modifier = Modifier
@@ -130,7 +137,8 @@ fun NoteCard(note: Note, onClick: () -> Unit) {
                 style = MaterialTheme.typography.titleMedium,
                 fontWeight = FontWeight.Bold,
                 maxLines = 1,
-                overflow = TextOverflow.Ellipsis
+                overflow = TextOverflow.Ellipsis,
+                color = contentColor
             )
             Spacer(modifier = Modifier.height(8.dp))
             Text(
@@ -138,13 +146,13 @@ fun NoteCard(note: Note, onClick: () -> Unit) {
                 style = MaterialTheme.typography.bodyMedium,
                 maxLines = 3,
                 overflow = TextOverflow.Ellipsis,
-                color = MaterialTheme.colorScheme.onSurfaceVariant
+                color = contentColor.copy(alpha = 0.8f)
             )
             Spacer(modifier = Modifier.height(12.dp))
             Text(
                 text = SimpleDateFormat("MMM d, yyyy", Locale.getDefault()).format(Date(note.createdAt)),
                 style = MaterialTheme.typography.labelSmall,
-                color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.7f)
+                color = contentColor.copy(alpha = 0.7f)
             )
         }
     }

@@ -12,21 +12,26 @@ class NoteRepository(private val noteDao: NoteDao) {
         return noteDao.getNoteById(id)
     }
 
-    suspend fun addNote(title: String, content: String) {
+    suspend fun addNote(title: String, content: String, color: Long) {
         val newNote = Note(
             id = UUID.randomUUID().toString(),
             title = title,
             content = content,
-            createdAt = Date().time
+            createdAt = Date().time,
+            color = color
         )
         noteDao.insertNote(newNote)
     }
 
-    suspend fun updateNote(id: String, title: String, content: String) {
+    suspend fun updateNote(id: String, title: String, content: String, color: Long) {
         // First, get the existing note to preserve its creation date
         val existingNote = getNoteById(id)
         if (existingNote != null) {
-            val updatedNote = existingNote.copy(title = title, content = content)
+            val updatedNote = existingNote.copy(
+                title = title,
+                content = content,
+                color = color
+            )
             noteDao.updateNote(updatedNote)
         }
     }
