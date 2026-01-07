@@ -10,10 +10,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase
 @Database(
     entities = [Note::class],
     version = 2,
-    exportSchema = true,
-    autoMigrations = [
-        AutoMigration (from = 1, to = 2)
-    ]
+    exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase() {
 
