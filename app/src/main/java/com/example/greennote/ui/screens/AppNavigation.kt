@@ -5,9 +5,10 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.greennote.data.NoteRepository
+import com.example.greennote.data.SettingsManager
 
 @Composable
-fun AppNavigation(noteRepository: NoteRepository) {
+fun AppNavigation(noteRepository: NoteRepository, settingsManager: SettingsManager) {
     val navController = rememberNavController()
     NavHost(navController = navController, startDestination = "noteList") {
         composable("noteList") {
@@ -20,6 +21,9 @@ fun AppNavigation(noteRepository: NoteRepository) {
                 noteRepository = noteRepository,
                 noteId = noteId
             )
+        }
+        composable("settings") {
+            SettingsScreen(navController = navController, settingsManager = settingsManager)
         }
     }
 }

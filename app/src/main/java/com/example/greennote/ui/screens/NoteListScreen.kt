@@ -24,7 +24,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.material.icons.outlined.Lightbulb
+import androidx.compose.material.icons.outlined.Settings
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -41,7 +41,16 @@ fun NoteListScreen(
                 colors = TopAppBarDefaults.topAppBarColors(
                     containerColor = MaterialTheme.colorScheme.primary,
                     titleContentColor = MaterialTheme.colorScheme.onPrimary
-                )
+                ),
+                actions = {
+                    IconButton(onClick = { navController.navigate("settings") }) {
+                        Icon(
+                            imageVector = Icons.Outlined.Settings,
+                            contentDescription = "Settings",
+                            tint = MaterialTheme.colorScheme.onPrimary
+                        )
+                    }
+                }
             )
         },
         floatingActionButton = {
