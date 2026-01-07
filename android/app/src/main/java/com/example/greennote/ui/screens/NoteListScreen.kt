@@ -29,6 +29,8 @@ import java.util.*
 import androidx.compose.material.icons.outlined.Lightbulb
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.material.icons.outlined.Settings
+import com.example.greennote.ui.screens.noteColors
+import com.example.greennote.ui.screens.noteContentColors
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -117,12 +119,7 @@ fun NoteListScreen(
 @Composable
 fun NoteCard(note: Note, onClick: () -> Unit) {
     val cardColor = Color(note.color)
-    // Determine a readable content color based on the card's background color
-    val contentColor = if (cardColor.luminance() > 0.2f) { // If card is light
-        Color.Black // Use black for text
-    } else { // If card is dark
-        Color.White // Use white for text
-    }
+    val contentColor = noteContentColors[noteColors.indexOf(cardColor)]
 
     ElevatedCard(
         modifier = Modifier

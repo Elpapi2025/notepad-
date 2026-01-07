@@ -38,6 +38,21 @@ val noteColors = listOf(
     Color(0xFFE8EAED)  // Gray
 )
 
+val noteContentColors = listOf(
+    Color.Black, // For White (0xFFFFFFFF)
+    Color.Black, // For Red (0xFFF28B82)
+    Color.Black, // For Orange (0xFFFBBC04)
+    Color.Black, // For Yellow (0xFFFFF475)
+    Color.Black, // For Green (0xFFCCFF90)
+    Color.Black, // For Teal (0xFFA7FFEB)
+    Color.Black, // For Blue (0xFFCBF0F8)
+    Color.Black, // For Dark Blue (0xFFAFCBFA)
+    Color.Black, // For Purple (0xFFD7AEFB)
+    Color.Black, // For Pink (0xFFFDCFE8)
+    Color.Black, // For Brown (0xFFE6C9A8)
+    Color.Black  // For Gray (0xFFE8EAED)
+)
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun NoteEditScreen(
