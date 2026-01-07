@@ -17,6 +17,7 @@ class SettingsManager(context: Context) {
 
     companion object {
         val IS_DARK_MODE = booleanPreferencesKey("is_dark_mode")
+        val HAS_SEEN_ONBOARDING = booleanPreferencesKey("has_seen_onboarding")
     }
 
     val isDarkMode: Flow<Boolean> = appContext.dataStore.data
@@ -27,6 +28,17 @@ class SettingsManager(context: Context) {
     suspend fun setDarkMode(isDarkMode: Boolean) {
         appContext.dataStore.edit { preferences ->
             preferences[IS_DARK_MODE] = isDarkMode
+        }
+    }
+
+    val hasSeenOnboarding: Flow<Boolean> = appContext.dataStore.data
+        .map { preferences ->
+            preferences[HAS_SEEN_ONBOARDING] ?: false
+        }
+
+    suspend fun setOnboardingSeen() {
+        appContext.dataStore.edit { preferences ->
+            preferences[HAS_SEEN_ONBOARDING] = true
         }
     }
 }

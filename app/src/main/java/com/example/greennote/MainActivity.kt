@@ -23,8 +23,16 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             val isDarkMode by settingsManager.isDarkMode.collectAsState(initial = false)
+            val hasSeenOnboarding by settingsManager.hasSeenOnboarding.collectAsState(initial = null)
+
             GreenNoteTheme(darkTheme = isDarkMode) {
-                AppNavigation(noteRepository = noteRepository, settingsManager = settingsManager)
+                if (hasSeenOnboarding != null) { // Wait until the preference is loaded
+                    AppNavigation(
+                        noteRepository = noteRepository,
+                        settingsManager = settingsManager,
+                        hasSeenOnboarding = hasSeenOnboarding!!
+                    )
+                }
             }
         }
     }

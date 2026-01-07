@@ -8,9 +8,18 @@ import com.example.greennote.data.NoteRepository
 import com.example.greennote.data.SettingsManager
 
 @Composable
-fun AppNavigation(noteRepository: NoteRepository, settingsManager: SettingsManager) {
+fun AppNavigation(
+    noteRepository: NoteRepository,
+    settingsManager: SettingsManager,
+    hasSeenOnboarding: Boolean
+) {
     val navController = rememberNavController()
-    NavHost(navController = navController, startDestination = "noteList") {
+    val startDestination = if (hasSeenOnboarding) "noteList" else "onboarding"
+
+    NavHost(navController = navController, startDestination = startDestination) {
+        composable("onboarding") {
+            OnboardingScreen(navController = navController, settingsManager = settingsManager)
+        }
         composable("noteList") {
             NoteListScreen(navController = navController, noteRepository = noteRepository)
         }
