@@ -4,6 +4,10 @@ plugins {
     alias(libs.plugins.google.ksp)
 }
 
+ksp {
+    arg("room.schemaLocation", "$project.projectDir/schemas")
+}
+
 android {
     namespace = "com.example.greennote"
     compileSdk = 34
@@ -19,8 +23,6 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
-
-        ksp("room.schemaLocation", "$project.projectDir/schemas")
     }
 
     buildTypes {
