@@ -4,9 +4,10 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import com.example.greennote.ui.theme.GreenNoteTheme
+import com.example.greennote.data.AppDatabase
 import com.example.greennote.data.NoteRepository
 import com.example.greennote.ui.screens.AppNavigation
+import com.example.greennote.ui.theme.GreenNoteTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
