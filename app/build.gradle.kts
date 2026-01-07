@@ -19,6 +19,8 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
+
+        ksp("room.schemaLocation", "$project.projectDir/schemas")
     }
 
     buildTypes {
