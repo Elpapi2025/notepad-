@@ -118,16 +118,6 @@ fun NoteListScreen(
 
 @Composable
 fun NoteCard(note: Note, onClick: () -> Unit) {
-    val cardColor = Color(note.color)
-    val contentColor = if (cardColor == Color.White) { // Explicitly check for white background
-        Color.Black // Force black text on white background
-    } else if (noteColors.contains(cardColor)) { // If it's one of our predefined colors
-        noteContentColors[noteColors.indexOf(cardColor)] // Use the mapped content color (which is black for all current noteColors)
-    } else { // Fallback for any other (unknown) colors - force black if perceived as light
-        // Use a very low threshold to ensure most non-dark colors get black text
-        if (cardColor.luminance() > 0.1f) Color.Black else Color.White
-    }
-
     ElevatedCard(
         modifier = Modifier
             .fillMaxWidth()
@@ -136,7 +126,7 @@ fun NoteCard(note: Note, onClick: () -> Unit) {
             .border(1.dp, Color.LightGray, RoundedCornerShape(12.dp)), // Added subtle border
         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
         shape = RoundedCornerShape(12.dp),
-        colors = CardDefaults.cardColors(containerColor = cardColor)
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant)
     ) {
         Column(
             modifier = Modifier
@@ -149,7 +139,7 @@ fun NoteCard(note: Note, onClick: () -> Unit) {
                 fontWeight = FontWeight.Bold,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
-                color = contentColor
+                color = MaterialTheme.colorScheme.onSurfaceVariant
             )
             Spacer(modifier = Modifier.height(8.dp))
             Text(
@@ -157,13 +147,13 @@ fun NoteCard(note: Note, onClick: () -> Unit) {
                 style = MaterialTheme.typography.bodyMedium,
                 maxLines = 3,
                 overflow = TextOverflow.Ellipsis,
-                color = contentColor.copy(alpha = 0.8f)
+                color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.8f)
             )
             Spacer(modifier = Modifier.height(12.dp))
             Text(
                 text = SimpleDateFormat("MMM d, yyyy", Locale.getDefault()).format(Date(note.createdAt)),
                 style = MaterialTheme.typography.labelSmall,
-                color = contentColor.copy(alpha = 0.7f)
+                color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.7f)
             )
         }
     }
