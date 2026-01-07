@@ -13,6 +13,8 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.greennote.data.NoteRepository
 
+import kotlinx.coroutines.launch
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun NoteEditScreen(
@@ -21,12 +23,20 @@ fun NoteEditScreen(
     noteId: String?
 ) {
     val isNewNote = noteId == "new"
-    val note = remember(noteId) {
-        if (!isNewNote) noteRepository.getNoteById(noteId!!) else null
-    }
+    val scope = rememberCoroutineScope()
 
-    var title by remember { mutableStateOf(note?.title ?: "") }
-    var content by remember { mutableStateOf(note?.content ?: "") }
+    var title by remember { mutableStateOf("") }
+    var content by remember { mutableStateOf("") }
+
+    // Fetch the note details if it's an existing note
+    LaunchedEffect(noteId) {
+        if (!isNewNote && noteId != null) {
+            noteRepository.getNoteById(noteId)?.let { note ->
+                title = note.title
+                content = note.content
+            }
+        }
+    }
 
     Scaffold(
         topBar = {
@@ -40,8 +50,10 @@ fun NoteEditScreen(
                 actions = {
                     if (!isNewNote) {
                         IconButton(onClick = {
-                            noteRepository.deleteNote(noteId!!)
-                            navController.popBackStack()
+                            scope.launch {
+                                noteRepository.deleteNote(noteId!!)
+                                navController.popBackStack()
+                            }
                         }) {
                             Icon(Icons.Filled.Delete, contentDescription = "Delete Note", tint = MaterialTheme.colorScheme.error)
                         }
@@ -53,12 +65,14 @@ fun NoteEditScreen(
             FloatingActionButton(
                 onClick = {
                     if (title.isNotBlank()) {
-                        if (isNewNote) {
-                            noteRepository.addNote(title, content)
-                        } else {
-                            noteRepository.updateNote(noteId!!, title, content)
+                        scope.launch {
+                            if (isNewNote) {
+                                noteRepository.addNote(title, content)
+                            } else {
+                                noteRepository.updateNote(noteId!!, title, content)
+                            }
+                            navController.popBackStack()
                         }
-                        navController.popBackStack()
                     }
                 },
                 containerColor = MaterialTheme.colorScheme.primary

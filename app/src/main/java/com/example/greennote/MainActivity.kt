@@ -13,7 +13,8 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         
-        val noteRepository = NoteRepository()
+        val database = AppDatabase.getDatabase(this)
+        val noteRepository = NoteRepository(database.noteDao())
 
         setContent {
             GreenNoteTheme {

@@ -1,65 +1,40 @@
 package com.example.greennote.data
 
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.flow.Flow
 import java.util.UUID
 import java.util.Date
 
-class NoteRepository {
+class NoteRepository(private val noteDao: NoteDao) {
 
-    private val _notes = MutableStateFlow<List<Note>>(emptyList())
-    val notes: StateFlow<List<Note>> = _notes.asStateFlow()
+    val notes: Flow<List<Note>> = noteDao.getAllNotes()
 
-    init {
-        // Pre-populate with some sample data
-        _notes.value = listOf(
-            Note(
-                id = UUID.randomUUID().toString(),
-                title = "Welcome to GreenNote!",
-                content = "This is a native Android version of the GreenNote app, built with Kotlin and Jetpack Compose.",
-                createdAt = Date().time
-            ),
-            Note(
-                id = UUID.randomUUID().toString(),
-                title = "My Second Note",
-                content = "You can create, edit, and delete notes.",
-                createdAt = Date().time - 1000 * 60 * 5 // 5 minutes ago
-            )
-        )
+    suspend fun getNoteById(id: String): Note? {
+        return noteDao.getNoteById(id)
     }
 
-    fun getNoteById(id: String): Note? {
-        return _notes.value.find { it.id == id }
-    }
-
-    fun addNote(title: String, content: String) {
+    suspend fun addNote(title: String, content: String) {
         val newNote = Note(
             id = UUID.randomUUID().toString(),
             title = title,
-            content = content
+            content = content,
+            createdAt = Date().time
         )
-        _notes.update { currentNotes ->
-            listOf(newNote) + currentNotes
+        noteDao.insertNote(newNote)
+    }
+
+    suspend fun updateNote(id: String, title: String, content: String) {
+        // First, get the existing note to preserve its creation date
+        val existingNote = getNoteById(id)
+        if (existingNote != null) {
+            val updatedNote = existingNote.copy(title = title, content = content)
+            noteDao.updateNote(updatedNote)
         }
     }
 
-    fun updateNote(id: String, title: String, content: String) {
-        _notes.update { currentNotes ->
-            currentNotes.map { note ->
-                if (note.id == id) {
-                    note.copy(title = title, content = content)
-                } else {
-                    note
-                }
-            }
-        }
-    }
-
-    fun deleteNote(id: String) {
-        _notes.update { currentNotes ->
-            currentNotes.filterNot { it.id == id }
+    suspend fun deleteNote(id: String) {
+        val noteToDelete = getNoteById(id)
+        if (noteToDelete != null) {
+            noteDao.deleteNote(noteToDelete)
         }
     }
 }
