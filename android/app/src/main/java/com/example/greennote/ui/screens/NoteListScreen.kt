@@ -118,8 +118,8 @@ fun NoteListScreen(
 fun NoteCard(note: Note, onClick: () -> Unit) {
     val cardColor = Color(note.color)
     // Determine a readable content color based on the card's background color
-    val contentColor = if (cardColor.luminance() > 0.5f) { // If card is light
-        Color(0xFF333333) // Use dark gray for text
+    val contentColor = if (cardColor.luminance() > 0.2f) { // If card is light
+        Color.Black // Use black for text
     } else { // If card is dark
         Color.White // Use white for text
     }
