@@ -24,33 +24,18 @@ import com.example.greennote.data.NoteRepository
 import kotlinx.coroutines.launch
 
 val noteColors = listOf(
-    Color(0xFFFFFFFF), // White
-    Color(0xFFF28B82), // Red
-    Color(0xFFFBBC04), // Orange
-    Color(0xFFFFF475), // Yellow
-    Color(0xFFCCFF90), // Green
-    Color(0xFFA7FFEB), // Teal
-    Color(0xFFCBF0F8), // Blue
-    Color(0xFFAFCBFA), // Dark Blue
-    Color(0xFFD7AEFB), // Purple
-    Color(0xFFFDCFE8), // Pink
-    Color(0xFFE6C9A8), // Brown
-    Color(0xFFE8EAED)  // Gray
-)
-
-val noteContentColors = listOf(
-    Color.Black, // For White (0xFFFFFFFF)
-    Color.Black, // For Red (0xFFF28B82)
-    Color.Black, // For Orange (0xFFFBBC04)
-    Color.Black, // For Yellow (0xFFFFF475)
-    Color.Black, // For Green (0xFFCCFF90)
-    Color.Black, // For Teal (0xFFA7FFEB)
-    Color.Black, // For Blue (0xFFCBF0F8)
-    Color.Black, // For Dark Blue (0xFFAFCBFA)
-    Color.Black, // For Purple (0xFFD7AEFB)
-    Color.Black, // For Pink (0xFFFDCFE8)
-    Color.Black, // For Brown (0xFFE6C9A8)
-    Color.Black  // For Gray (0xFFE8EAED)
+    "#FFFFFF", // White
+    "#F28B82", // Red
+    "#FBBC04", // Orange
+    "#FFF475", // Yellow
+    "#CCFF90", // Green
+    "#A7FFEB", // Teal
+    "#CBF0F8", // Blue
+    "#AFCBFA", // Dark Blue
+    "#D7AEFB", // Purple
+    "#FDCFE8", // Pink
+    "#E6C9A8", // Brown
+    "#E8EAED"  // Gray
 )
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -65,7 +50,7 @@ fun NoteEditScreen(
 
     var title by remember { mutableStateOf("") }
     var content by remember { mutableStateOf("") }
-    var color by remember { mutableStateOf(noteColors[4].value) }
+    var color by remember { mutableStateOf(noteColors[4]) }
 
     // Fetch the note details if it's an existing note
     LaunchedEffect(noteId) {
@@ -73,7 +58,7 @@ fun NoteEditScreen(
             noteRepository.getNoteById(noteId)?.let { note ->
                 title = note.title
                 content = note.content
-                color = note.color?.let { Color(android.graphics.Color.parseColor(it)).value } ?: noteColors[4].value
+                color = note.color ?: noteColors[4]
             }
         }
     }
@@ -106,11 +91,10 @@ fun NoteEditScreen(
                 onClick = {
                     if (title.isNotBlank()) {
                         scope.launch {
-                            val colorHex = String.format("#%06X", 0xFFFFFF & color.toLong())
                             if (isNewNote) {
-                                noteRepository.addNote(title, content, colorHex)
+                                noteRepository.addNote(title, content, color)
                             } else {
-                                noteRepository.updateNote(noteId!!, title, content, colorHex)
+                                noteRepository.updateNote(noteId!!, title, content, color)
                             }
                             navController.popBackStack()
                         }
@@ -147,18 +131,18 @@ fun NoteEditScreen(
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 items(noteColors) { itemColor ->
-                    val isSelected = color == itemColor.value
+                    val isSelected = color == itemColor
                     Box(
                         modifier = Modifier
                             .size(36.dp)
                             .clip(CircleShape)
-                            .background(itemColor)
+                            .background(Color(android.graphics.Color.parseColor(itemColor)))
                             .border(
                                 width = if (isSelected) 2.dp else 1.dp,
                                 color = if (isSelected) MaterialTheme.colorScheme.primary else Color.Gray,
                                 shape = CircleShape
                             )
-                            .clickable { color = itemColor.value }
+                            .clickable { color = itemColor }
                     )
                 }
             }
