@@ -35,7 +35,7 @@ import androidx.compose.material.icons.outlined.Settings
 // Helper function to safely parse color outside of a Composable
 private fun parseColorSafe(colorString: String?, defaultColor: Color): Color {
     return try {
-        colorString?.let { Color(android.graphics.Color.parseColor(it).toULong()) } ?: defaultColor
+        colorString?.let { Color(android.graphics.Color.parseColor(it)) } ?: defaultColor
     } catch (e: Exception) {
         defaultColor
     }
