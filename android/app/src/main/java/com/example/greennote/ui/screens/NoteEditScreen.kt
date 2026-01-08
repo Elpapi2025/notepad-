@@ -65,7 +65,7 @@ fun NoteEditScreen(
 
     var title by remember { mutableStateOf("") }
     var content by remember { mutableStateOf("") }
-    var color by remember { mutableStateOf(noteColors[4].value.toLong()) }
+    var color by remember { mutableStateOf<String?>(String.format("#%06X", 0xFFFFFF and noteColors[4].value.toInt())) }
 
     // Fetch the note details if it's an existing note
     LaunchedEffect(noteId) {
@@ -146,7 +146,8 @@ fun NoteEditScreen(
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 items(noteColors) { itemColor ->
-                    val isSelected = color == itemColor.value.toLong()
+                    val itemColorHex = String.format("#%06X", 0xFFFFFF & itemColor.value.toInt())
+                    val isSelected = color == itemColorHex
                     Box(
                         modifier = Modifier
                             .size(36.dp)
@@ -157,7 +158,7 @@ fun NoteEditScreen(
                                 color = if (isSelected) MaterialTheme.colorScheme.primary else Color.Gray,
                                 shape = CircleShape
                             )
-                            .clickable { color = itemColor.value.toLong() }
+                            .clickable { color = itemColorHex }
                     )
                 }
             }
