@@ -65,7 +65,7 @@ fun NoteEditScreen(
 
     var title by remember { mutableStateOf("") }
     var content by remember { mutableStateOf("") }
-    var color by remember { mutableStateOf<String?>(String.format("#%06X", 0xFFFFFF and noteColors[4].value.toInt())) }
+    var color by remember { mutableStateOf(noteColors[4].value) }
 
     // Fetch the note details if it's an existing note
     LaunchedEffect(noteId) {
@@ -73,7 +73,7 @@ fun NoteEditScreen(
             noteRepository.getNoteById(noteId)?.let { note ->
                 title = note.title
                 content = note.content
-                color = note.color
+                color = note.color?.let { Color(android.graphics.Color.parseColor(it)).value } ?: noteColors[4].value
             }
         }
     }
@@ -106,10 +106,11 @@ fun NoteEditScreen(
                 onClick = {
                     if (title.isNotBlank()) {
                         scope.launch {
+                            val colorHex = String.format("#%06X", 0xFFFFFF & color.toLong())
                             if (isNewNote) {
-                                noteRepository.addNote(title, content, color)
+                                noteRepository.addNote(title, content, colorHex)
                             } else {
-                                noteRepository.updateNote(noteId!!, title, content, color)
+                                noteRepository.updateNote(noteId!!, title, content, colorHex)
                             }
                             navController.popBackStack()
                         }
@@ -146,8 +147,7 @@ fun NoteEditScreen(
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 items(noteColors) { itemColor ->
-                    val itemColorHex = String.format("#%06X", 0xFFFFFF & itemColor.value.toInt())
-                    val isSelected = color == itemColorHex
+                    val isSelected = color == itemColor.value
                     Box(
                         modifier = Modifier
                             .size(36.dp)
@@ -158,7 +158,7 @@ fun NoteEditScreen(
                                 color = if (isSelected) MaterialTheme.colorScheme.primary else Color.Gray,
                                 shape = CircleShape
                             )
-                            .clickable { color = itemColorHex }
+                            .clickable { color = itemColor.value }
                     )
                 }
             }
