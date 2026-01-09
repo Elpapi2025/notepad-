@@ -74,6 +74,9 @@ dependencies {
     // DataStore for Preferences
     implementation(libs.androidx.datastore.preferences)
 
+    // libSQL for Turso
+    implementation("tech.turso.libsql:libsql:0.1.0")
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))

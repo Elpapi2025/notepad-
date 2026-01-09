@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">GreenNote</string>
+    <string name="settings_title">Configuración</string>
+    <string name="back_button_desc">Atrás</string>
+    <string name="dark_mode_setting">Modo Oscuro</string>
+    <string name="language_setting">Idioma</string>
+    <string name="language_english">Inglés</string>
+    <string name="language_spanish">Español</string>
+    <string name="font_size_setting">Tamaño de Fuente</string>
+</resources>

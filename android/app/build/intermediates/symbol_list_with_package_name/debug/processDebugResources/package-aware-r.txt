@@ -188,6 +188,7 @@ layout notification_template_part_chronometer
 layout notification_template_part_time
 string androidx_startup
 string app_name
+string back_button_desc
 string call_notification_answer_action
 string call_notification_answer_video_action
 string call_notification_decline_action
@@ -197,11 +198,16 @@ string call_notification_ongoing_text
 string call_notification_screening_text
 string close_drawer
 string close_sheet
+string dark_mode_setting
 string default_error_message
 string default_popup_window_title
 string dropdown_menu
+string font_size_setting
 string in_progress
 string indeterminate
+string language_english
+string language_setting
+string language_spanish
 string m3c_bottom_sheet_collapse_description
 string m3c_bottom_sheet_dismiss_description
 string m3c_bottom_sheet_drag_handle_description
@@ -265,6 +271,7 @@ string on
 string range_end
 string range_start
 string selected
+string settings_title
 string status_bar_notification_info_overflow
 string switch_role
 string tab

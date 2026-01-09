@@ -4,16 +4,17 @@ ADDED from /home/user/studio/android/app/src/main/AndroidManifest.xml:2:1-28:12
 INJECTED from /home/user/studio/android/app/src/main/AndroidManifest.xml:2:1-28:12
 INJECTED from /home/user/studio/android/app/src/main/AndroidManifest.xml:2:1-28:12
 INJECTED from /home/user/studio/android/app/src/main/AndroidManifest.xml:2:1-28:12
+MERGED from [tech.turso.libsql:libsql:0.1.0] /home/user/.gradle/caches/8.10.2/transforms/d83f136c6ff753a4d208719e192e9a0c/transformed/jetified-libsql-0.1.0/AndroidManifest.xml:2:1-9:12
 MERGED from [androidx.navigation:navigation-common:2.7.7] /home/user/.gradle/caches/8.10.2/transforms/ec70ab0389ec65f03636736668c3ee0d/transformed/navigation-common-2.7.7/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.navigation:navigation-runtime:2.7.7] /home/user/.gradle/caches/8.10.2/transforms/8f1db0ddda035a561332b8ad9d35d757/transformed/navigation-runtime-2.7.7/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.navigation:navigation-common-ktx:2.7.7] /home/user/.gradle/caches/8.10.2/transforms/01cda8a8bee239e5556edf022bfb75be/transformed/navigation-common-ktx-2.7.7/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.navigation:navigation-runtime-ktx:2.7.7] /home/user/.gradle/caches/8.10.2/transforms/0f174d62b15c65f0e1e8e8f5157f6ead/transformed/navigation-runtime-ktx-2.7.7/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.navigation:navigation-compose:2.7.7] /home/user/.gradle/caches/8.10.2/transforms/ccd0350cf64f72190c8921a3f5a26064/transformed/jetified-navigation-compose-2.7.7/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.compose.material3:material3-android:1.2.1] /home/user/.gradle/caches/8.10.2/transforms/75100f702766d863df7407b9e28145c4/transformed/jetified-material3-release/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.compose.material:material-android:1.6.8] /home/user/.gradle/caches/8.10.2/transforms/0362e06fea9587260f1b381044cac70f/transformed/jetified-material-release/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.material:material-ripple-android:1.6.8] /home/user/.gradle/caches/8.10.2/transforms/f8739b433ca024b92c72c2cd6f7c4eae/transformed/jetified-material-ripple-release/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.compose.material:material-icons-core-android:1.6.8] /home/user/.gradle/caches/8.10.2/transforms/d6c5d125ddb9d5268719a381a65f6376/transformed/jetified-material-icons-core-release/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.compose.material:material-icons-extended-android:1.6.8] /home/user/.gradle/caches/8.10.2/transforms/38429b89ab0cecd4ce2b21f88f9259b3/transformed/jetified-material-icons-extended-release/AndroidManifest.xml:2:1-7:12
-MERGED from [androidx.compose.material:material-ripple-android:1.6.8] /home/user/.gradle/caches/8.10.2/transforms/f8739b433ca024b92c72c2cd6f7c4eae/transformed/jetified-material-ripple-release/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.material:material-android:1.6.8] /home/user/.gradle/caches/8.10.2/transforms/0362e06fea9587260f1b381044cac70f/transformed/jetified-material-release/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.compose.animation:animation-core-android:1.6.8] /home/user/.gradle/caches/8.10.2/transforms/0ba7207c93810d88c7b3e1565fae4182/transformed/jetified-animation-core-release/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.compose.animation:animation-android:1.6.8] /home/user/.gradle/caches/8.10.2/transforms/06557bdcbca34a4fba260a23b6d0504f/transformed/jetified-animation-release/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.compose.foundation:foundation-layout-android:1.6.8] /home/user/.gradle/caches/8.10.2/transforms/8b704412c88d42d9de8bca7c7a0cace1/transformed/jetified-foundation-layout-release/AndroidManifest.xml:2:1-7:12
@@ -136,6 +137,8 @@ uses-sdk
 INJECTED from /home/user/studio/android/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /home/user/studio/android/app/src/main/AndroidManifest.xml
 INJECTED from /home/user/studio/android/app/src/main/AndroidManifest.xml
+MERGED from [tech.turso.libsql:libsql:0.1.0] /home/user/.gradle/caches/8.10.2/transforms/d83f136c6ff753a4d208719e192e9a0c/transformed/jetified-libsql-0.1.0/AndroidManifest.xml:5:5-44
+MERGED from [tech.turso.libsql:libsql:0.1.0] /home/user/.gradle/caches/8.10.2/transforms/d83f136c6ff753a4d208719e192e9a0c/transformed/jetified-libsql-0.1.0/AndroidManifest.xml:5:5-44
 MERGED from [androidx.navigation:navigation-common:2.7.7] /home/user/.gradle/caches/8.10.2/transforms/ec70ab0389ec65f03636736668c3ee0d/transformed/navigation-common-2.7.7/AndroidManifest.xml:20:5-44
 MERGED from [androidx.navigation:navigation-common:2.7.7] /home/user/.gradle/caches/8.10.2/transforms/ec70ab0389ec65f03636736668c3ee0d/transformed/navigation-common-2.7.7/AndroidManifest.xml:20:5-44
 MERGED from [androidx.navigation:navigation-runtime:2.7.7] /home/user/.gradle/caches/8.10.2/transforms/8f1db0ddda035a561332b8ad9d35d757/transformed/navigation-runtime-2.7.7/AndroidManifest.xml:20:5-44
@@ -148,14 +151,14 @@ MERGED from [androidx.navigation:navigation-compose:2.7.7] /home/user/.gradle/ca
 MERGED from [androidx.navigation:navigation-compose:2.7.7] /home/user/.gradle/caches/8.10.2/transforms/ccd0350cf64f72190c8921a3f5a26064/transformed/jetified-navigation-compose-2.7.7/AndroidManifest.xml:5:5-44
 MERGED from [androidx.compose.material3:material3-android:1.2.1] /home/user/.gradle/caches/8.10.2/transforms/75100f702766d863df7407b9e28145c4/transformed/jetified-material3-release/AndroidManifest.xml:20:5-44
 MERGED from [androidx.compose.material3:material3-android:1.2.1] /home/user/.gradle/caches/8.10.2/transforms/75100f702766d863df7407b9e28145c4/transformed/jetified-material3-release/AndroidManifest.xml:20:5-44
-MERGED from [androidx.compose.material:material-android:1.6.8] /home/user/.gradle/caches/8.10.2/transforms/0362e06fea9587260f1b381044cac70f/transformed/jetified-material-release/AndroidManifest.xml:5:5-44
-MERGED from [androidx.compose.material:material-android:1.6.8] /home/user/.gradle/caches/8.10.2/transforms/0362e06fea9587260f1b381044cac70f/transformed/jetified-material-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.material:material-ripple-android:1.6.8] /home/user/.gradle/caches/8.10.2/transforms/f8739b433ca024b92c72c2cd6f7c4eae/transformed/jetified-material-ripple-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.material:material-ripple-android:1.6.8] /home/user/.gradle/caches/8.10.2/transforms/f8739b433ca024b92c72c2cd6f7c4eae/transformed/jetified-material-ripple-release/AndroidManifest.xml:5:5-44
 MERGED from [androidx.compose.material:material-icons-core-android:1.6.8] /home/user/.gradle/caches/8.10.2/transforms/d6c5d125ddb9d5268719a381a65f6376/transformed/jetified-material-icons-core-release/AndroidManifest.xml:5:5-44
 MERGED from [androidx.compose.material:material-icons-core-android:1.6.8] /home/user/.gradle/caches/8.10.2/transforms/d6c5d125ddb9d5268719a381a65f6376/transformed/jetified-material-icons-core-release/AndroidManifest.xml:5:5-44
 MERGED from [androidx.compose.material:material-icons-extended-android:1.6.8] /home/user/.gradle/caches/8.10.2/transforms/38429b89ab0cecd4ce2b21f88f9259b3/transformed/jetified-material-icons-extended-release/AndroidManifest.xml:5:5-44
 MERGED from [androidx.compose.material:material-icons-extended-android:1.6.8] /home/user/.gradle/caches/8.10.2/transforms/38429b89ab0cecd4ce2b21f88f9259b3/transformed/jetified-material-icons-extended-release/AndroidManifest.xml:5:5-44
-MERGED from [androidx.compose.material:material-ripple-android:1.6.8] /home/user/.gradle/caches/8.10.2/transforms/f8739b433ca024b92c72c2cd6f7c4eae/transformed/jetified-material-ripple-release/AndroidManifest.xml:5:5-44
-MERGED from [androidx.compose.material:material-ripple-android:1.6.8] /home/user/.gradle/caches/8.10.2/transforms/f8739b433ca024b92c72c2cd6f7c4eae/transformed/jetified-material-ripple-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.material:material-android:1.6.8] /home/user/.gradle/caches/8.10.2/transforms/0362e06fea9587260f1b381044cac70f/transformed/jetified-material-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.material:material-android:1.6.8] /home/user/.gradle/caches/8.10.2/transforms/0362e06fea9587260f1b381044cac70f/transformed/jetified-material-release/AndroidManifest.xml:5:5-44
 MERGED from [androidx.compose.animation:animation-core-android:1.6.8] /home/user/.gradle/caches/8.10.2/transforms/0ba7207c93810d88c7b3e1565fae4182/transformed/jetified-animation-core-release/AndroidManifest.xml:5:5-44
 MERGED from [androidx.compose.animation:animation-core-android:1.6.8] /home/user/.gradle/caches/8.10.2/transforms/0ba7207c93810d88c7b3e1565fae4182/transformed/jetified-animation-core-release/AndroidManifest.xml:5:5-44
 MERGED from [androidx.compose.animation:animation-android:1.6.8] /home/user/.gradle/caches/8.10.2/transforms/06557bdcbca34a4fba260a23b6d0504f/transformed/jetified-animation-release/AndroidManifest.xml:5:5-44
@@ -254,6 +257,10 @@ MERGED from [androidx.tracing:tracing:1.0.0] /home/user/.gradle/caches/8.10.2/tr
 		INJECTED from /home/user/studio/android/app/src/main/AndroidManifest.xml
 	android:minSdkVersion
 		INJECTED from /home/user/studio/android/app/src/main/AndroidManifest.xml
+uses-permission#android.permission.INTERNET
+ADDED from [tech.turso.libsql:libsql:0.1.0] /home/user/.gradle/caches/8.10.2/transforms/d83f136c6ff753a4d208719e192e9a0c/transformed/jetified-libsql-0.1.0/AndroidManifest.xml:7:5-67
+	android:name
+		ADDED from [tech.turso.libsql:libsql:0.1.0] /home/user/.gradle/caches/8.10.2/transforms/d83f136c6ff753a4d208719e192e9a0c/transformed/jetified-libsql-0.1.0/AndroidManifest.xml:7:22-64
 provider#androidx.startup.InitializationProvider
 ADDED from [androidx.emoji2:emoji2:1.3.0] /home/user/.gradle/caches/8.10.2/transforms/e543b1c1377fe10cd4e19e3689467bd0/transformed/jetified-emoji2-1.3.0/AndroidManifest.xml:24:9-32:20
 MERGED from [androidx.lifecycle:lifecycle-process:2.8.1] /home/user/.gradle/caches/8.10.2/transforms/1e64a6fae770714fe6f0941b5f8fa59b/transformed/jetified-lifecycle-process-2.8.1/AndroidManifest.xml:24:9-32:20

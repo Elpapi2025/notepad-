@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">GreenNote</string>
+    <string name="back_button_desc">Back</string>
+    <string name="dark_mode_setting">Dark Mode</string>
+    <string name="font_size_setting">Font Size</string>
+    <string name="language_english">English</string>
+    <string name="language_setting">Language</string>
+    <string name="language_spanish">Spanish</string>
+    <string name="settings_title">Settings</string>
     <style name="Theme.GreenNote" parent="android:Theme.Material.Light.NoActionBar">
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:windowLightStatusBar">true</item>

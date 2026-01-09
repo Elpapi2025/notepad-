@@ -2,6 +2,13 @@ R_DEF: Internal format may change without notice
 local
 drawable ic_launcher_foreground
 string app_name
+string back_button_desc
+string dark_mode_setting
+string font_size_setting
+string language_english
+string language_setting
+string language_spanish
+string settings_title
 style Theme.GreenNote
 xml backup_rules
 xml data_extraction_rules
