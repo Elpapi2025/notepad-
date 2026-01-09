@@ -1,0 +1,13 @@
+/home/user/studio/android/app/src/main/java/com/example/greennote/ui/screens/NoteListScreen.kt
+/home/user/studio/android/app/src/main/java/com/example/greennote/ui/screens/SettingsScreen.kt
+/home/user/studio/android/app/src/main/java/com/example/greennote/data/NoteRepository.kt
+/home/user/studio/android/app/src/main/java/com/example/greennote/data/TursoClient.kt
+/home/user/studio/android/app/src/main/java/com/example/greennote/ui/theme/Color.kt
+/home/user/studio/android/app/src/main/java/com/example/greennote/ui/screens/NoteEditScreen.kt
+/home/user/studio/android/app/src/main/java/com/example/greennote/MainActivity.kt
+/home/user/studio/android/app/src/main/java/com/example/greennote/ui/screens/AppNavigation.kt
+/home/user/studio/android/app/src/main/java/com/example/greennote/ui/theme/Typography.kt
+/home/user/studio/android/app/src/main/java/com/example/greennote/ui/screens/OnboardingScreen.kt
+/home/user/studio/android/app/src/main/java/com/example/greennote/data/Note.kt
+/home/user/studio/android/app/src/main/java/com/example/greennote/data/SettingsManager.kt
+/home/user/studio/android/app/src/main/java/com/example/greennote/ui/theme/Theme.kt
