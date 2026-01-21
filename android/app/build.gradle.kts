@@ -52,6 +52,11 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+
+
+
+
+
 }
 
 dependencies {
@@ -74,8 +79,7 @@ dependencies {
     // DataStore for Preferences
     implementation(libs.androidx.datastore.preferences)
 
-    // libSQL for Turso
-    implementation("tech.turso.libsql:libsql:0.1.0")
+
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.espresso.core)
